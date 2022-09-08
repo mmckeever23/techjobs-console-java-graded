@@ -43,8 +43,8 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
-
-                    System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
+                    System.out.println();
+                    System.out.println("*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
                     for (String item : results) {
@@ -58,7 +58,8 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
-                System.out.println("\nSearch term:");
+                System.out.println();
+                System.out.println("Search term:");
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
@@ -77,7 +78,7 @@ public class TechJobs {
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure, so we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -87,8 +88,8 @@ public class TechJobs {
 
         do {
 
-            System.out.println("\n" + menuHeader);
-
+            System.out.println();
+            System.out.println(menuHeader);
             // Print available choices
             for (int j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
@@ -120,16 +121,16 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
                 if (someJobs.size() == 0) {
-            System.out.println("No Results");
+            System.out.print("No Results");
         } else {
-            for (int i = 0; i < someJobs.size(); i++) {
-                System.out.println("");
-                System.out.println("*****");
-                for (String key : someJobs.get(i).keySet()) {
-                    System.out.println(key + ": " + someJobs.get(i).get(key));
-                }
-                System.out.println("*****");
-            }
+                    for (HashMap<String, String> someJob : someJobs) {
+                        System.out.println();
+                        System.out.println("*****");
+                        for (String key : someJob.keySet()) {
+                            System.out.println(key + ": " + someJob.get(key));
+                        }
+                        System.out.println("*****");
+                    }
         }
     }
 }
